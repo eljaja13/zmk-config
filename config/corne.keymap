@@ -30,20 +30,30 @@
             bindings = <&kp RCTRL>;
             key-positions = <20 21>;
         };
+
+        ctr-cmd-left {
+            bindings = <&kp LC(LCMD)>;
+            key-positions = <16 15 14>;
+        };
+
+        ctl-cmd-right {
+            bindings = <&kp RC(RCMD)>;
+            key-positions = <19 20 21>;
+        };
     };
 
     macros {
         r_asigne: r_asigne {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp SPACE &kp SEMI &kp MINUS &kp SPACE>;
+            bindings = <&none &kp SPACE &kp LESS_THAN &kp MINUS &kp SPACE>;
             label = "R_ASIGNE";
         };
 
         r_pipe: r_pipe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp SPACE &kp SEMI &kp MINUS &kp SPACE>;
+            bindings = <&none &kp SPACE &kp PIPE &kp GREATER_THAN &kp SPACE>;
             label = "R_PIPE";
         };
     };
@@ -52,7 +62,7 @@
         coma_colon: coma_colon {
             compatible = "zmk,behavior-mod-morph";
             label = "COMA_COLON";
-            bindings = <&kp KP_COMMA>, <&kp SEMICOLON>;
+            bindings = <&kp COMMA>, <&kp SEMICOLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
