@@ -48,6 +48,26 @@
         };
     };
 
+    behaviors {
+        coma_colon: coma_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMA_COLON";
+            bindings = <&kp KP_COMMA>, <&kp SEMICOLON>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        period_colon: period_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "PERIOD_COLON";
+            bindings = <&kp DOT>, <&kp COLON>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -59,10 +79,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ENTER   &kp Q  &kp W  &kp E     &kp R    &kp T              &kp Y             &kp U        &kp I      &kp O    &kp P     &kp ESCAPE
-&kp ESCAPE  &kp A  &kp S  &kp D     &kp F    &kp G              &kp H             &kp J        &kp K      &kp L    &kp APOS  &kp ENTER
-&kp LSHFT   &kp Z  &kp X  &kp C     &kp V    &kp B              &kp N             &kp M        &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                          &kp LGUI  &kp TAB  &lt 1 BACKSPACE    &mt RSHIFT SPACE  &lt 2 MINUS  &none
+&kp ENTER   &kp Q  &kp W  &kp E     &kp R    &kp T              &kp Y             &kp U        &kp I        &kp O          &kp P     &kp ESCAPE
+&kp ESCAPE  &kp A  &kp S  &kp D     &kp F    &kp G              &kp H             &kp J        &kp K        &kp L          &kp APOS  &kp ENTER
+&kp LSHFT   &kp Z  &kp X  &kp C     &kp V    &kp B              &kp N             &kp M        &coma_colon  &period_colon  &kp FSLH  &kp RSHFT
+                          &kp LGUI  &kp TAB  &lt 1 BACKSPACE    &mt RSHIFT SPACE  &lt 2 MINUS  &caps_word
             >;
         };
 
@@ -74,10 +94,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &none                &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp F1    &none     &none           &kp UP_ARROW    &kp PAGE_UP    &none    &none
-&none  &kp N0               &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp F2    &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT      &kp END  &none
-&none  &kp LS(PRINTSCREEN)  &kp N7        &kp NUMBER_8  &kp N9        &kp F3    &none     &none           &none           &kp PAGE_DOWN  &none    &none
-                                          &trans        &trans        &trans    &trans    &trans          &trans
+&kp C_VOLUME_UP    &none                &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp F1    &none     &none           &kp UP_ARROW    &kp PAGE_UP    &none    &kp C_BRIGHTNESS_INC
+&kp K_MUTE         &kp N0               &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp F2    &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT      &kp END  &none
+&kp C_VOLUME_DOWN  &kp LS(PRINTSCREEN)  &kp N7        &kp NUMBER_8  &kp N9        &kp F3    &none     &none           &none           &kp PAGE_DOWN  &none    &kp C_BRIGHTNESS_DEC
+                                                      &trans        &trans        &trans    &trans    &trans          &trans
             >;
         };
 
@@ -89,10 +109,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none         &none        &r_asigne     &r_pipe          &none          &kp AMPERSAND    &kp TILDE  &kp RIGHT_BRACE  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp GREATER_THAN  &kp BSPC
-&kp KP_EQUAL  &kp PERCENT  &kp AT_SIGN   &kp HASH         &kp DOLLAR     &kp PIPE         &kp GRAVE  &kp LEFT_BRACE   &kp LEFT_PARENTHESIS   &kp LEFT_BRACKET   &kp LESS_THAN     &kp GRAVE
-&none         &kp PLUS     &kp KP_MINUS  &kp KP_ASTERISK  &kp KP_DIVIDE  &kp EXCL         &kp CARET  &kp PLUS         &kp LBRC               &kp RBRC           &kp PIPE          &kp TILDE
-                                         &kp LGUI         &trans         &kp SPACE        &kp RET    &trans           &kp RALT
+&none         &none        &r_asigne     &r_pipe          &none          &kp AMPERSAND    &kp TILDE  &kp RIGHT_BRACE  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp GREATER_THAN  &none
+&kp KP_EQUAL  &kp PERCENT  &kp AT_SIGN   &kp HASH         &kp DOLLAR     &kp PIPE         &kp GRAVE  &kp LEFT_BRACE   &kp LEFT_PARENTHESIS   &kp LEFT_BRACKET   &kp LESS_THAN     &kp UNDER
+&none         &kp PLUS     &kp KP_MINUS  &kp KP_ASTERISK  &kp KP_DIVIDE  &kp EXCL         &kp CARET  &none            &kp SEMICOLON          &kp COLON          &kp BACKSLASH     &none
+                                         &trans           &trans         &trans           &trans     &trans           &trans
             >;
         };
     };
